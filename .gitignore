@@ -2,3 +2,10 @@
 Thumbs.db
 *.swp
 *~
+
+# Python
+__pycache__/
+*.pyc
+
+# Local source artifacts not for publication
+Screenshot *.png
