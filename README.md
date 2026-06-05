@@ -2,7 +2,7 @@
 
 by William Duckworth.
 
-**[Read the original paper (PDF)](deciphering-beale-cipher-1.pdf)** · 7 pages · February 2025
+**Version history.** The original 7-page paper was published in February 2025 and is preserved here as [`deciphering-beale-cipher-1-original-feb-2025.pdf`](deciphering-beale-cipher-1-original-feb-2025.pdf). This README is the expanded reanalysis, last updated June 2026, incorporating additional statistical, geographical, orthographic, historical, and stylometric evidence not present in the original PDF.
 
 ---
 
