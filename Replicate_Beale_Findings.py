@@ -106,25 +106,33 @@ def run_replication():
     print("           BEALE CIPHER 1 — TARGET TRIPLET SEARCH")
     print("=" * 68)
 
+    def contributing_source_numbers(pair_pos):
+        """Unique cipher numbers (and their list indices) whose digits contribute
+        to the triplet of three pairs starting at pair_pos."""
+        char_start = pair_pos * 2
+        char_end = char_start + 6  # three 2-digit pairs = six digits
+        unique_indices = sorted(set(char_to_num_map[char_start:char_end]))
+        return unique_indices, [cipher_numbers[i] for i in unique_indices]
+
     if lat_positions:
         for pos in lat_positions:
-            source_nums = [cipher_numbers[pair_origins[pos + offset]] for offset in range(3)]
+            indices, source_nums = contributing_source_numbers(pos)
             print(f"  Latitude  [37,12,21] FOUND at pair index {pos}")
             print(f"    drawn from source numbers {source_nums} "
-                  f"(near list index {pair_origins[pos]})")
+                  f"at list indices {indices}")
     else:
         print("  Latitude  [37,12,21] NOT FOUND")
 
     if lon_positions:
         for pos in lon_positions:
-            source_nums = [cipher_numbers[pair_origins[pos + offset]] for offset in range(3)]
+            indices, source_nums = contributing_source_numbers(pos)
             print(f"  Longitude [79,23,16] FOUND at pair index {pos}")
             print(f"    drawn from source numbers {source_nums} "
-                  f"(near list index {pair_origins[pos]})")
+                  f"at list indices {indices}")
             # Plain observation about the longitude origin: per-token vs cross-token
             if source_nums == [79, 23, 16]:
                 print(f"    NOTE: This triplet appears as three CONSECUTIVE cipher numbers")
-                print(f"          at list index {pair_origins[pos]} (not an emergent")
+                print(f"          at list indices {indices} (not an emergent")
                 print(f"          cross-token artifact of 2-digit pairing).")
     else:
         print("  Longitude [79,23,16] NOT FOUND")
